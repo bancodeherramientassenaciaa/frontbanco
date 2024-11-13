@@ -1,6 +1,6 @@
 // axiosConfig.js
 import axios from 'axios';
-console.log("API URL:", import.meta.env.VITE_API_URL);
+console.log("Nuveo despliegue:", import.meta.env.VITE_API_URL);
 // Crear una instancia de axios
 const axiosInstance = axios.create({
     baseURL: import.meta.env.VITE_API_URL, 

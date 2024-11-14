@@ -21,6 +21,7 @@ import { PiMapPinAreaFill } from "react-icons/pi";
 import { MdHistoryToggleOff } from "react-icons/md";
 import { HiSortDescending } from "react-icons/hi";
 import { RiUserReceived2Fill } from "react-icons/ri";
+import Sena from "../../assets/Sena.png"; 
 
 export const Menu = ({ children }) => {
     const { role } = useContext(MediosContext); 
@@ -203,7 +204,7 @@ export const Menu = ({ children }) => {
 
                 <div className="flex items-center p-4 border-b">
                     <Avatar>
-                        <img src="../../assets/Sena.png" />
+                        <img src={Sena}/>
                         <AvatarFallback>BH</AvatarFallback>
                     </Avatar>
                     <div className="ml-4">

@@ -6,6 +6,7 @@ const ListComponent = ({
     renderRow, // Función para renderizar cada fila
     searchKeys, // Llaves para realizar la búsqueda
     title, // Título por defecto
+    showSearch = true
 }) => {
     const [searchTerm, setSearchTerm] = useState('');
 
@@ -24,15 +25,16 @@ const ListComponent = ({
         <div className="p-2">
             <div className="flex justify-between items-center">
                 <h1 className="text-2xl font-bold text-black p-4 mb-4">{title}</h1>
-
-                {/* Buscador */}
-                <input
-                    type="text"
-                    className="border-2 border-black p-2 w-1/3 mb-4 rounded-md"
-                    placeholder="Buscar..."
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                />
+                {/* Condicional para mostrar la barra de búsqueda */}
+                {showSearch && (
+                    <input
+                        type="text"
+                        className="border-2 border-black p-2 w-1/3 mb-4 rounded-md"
+                        placeholder="Buscar..."
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                    />
+                )}
             </div>
 
             {/* Tabla genérica con scroll vertical y horizontal */}

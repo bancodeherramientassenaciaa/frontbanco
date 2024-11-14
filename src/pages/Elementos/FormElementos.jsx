@@ -158,7 +158,7 @@ export const FormElementos = () => {
                         { value: "Agotado", label: "Agotado" },
                     ]}                
                 /><br></br>
-                <div className={inputs1.length % 2 === 0 ? "md:col-span-8" : "   display-flex mt-20"}>
+                <div className={inputs1.length % 2 === 0 ? "md:col-span-2" : "flex items-center justify-center mt-4"}>
                     <Button type={'submit'} name={'Enviar'} />
                 </div>
             </form>

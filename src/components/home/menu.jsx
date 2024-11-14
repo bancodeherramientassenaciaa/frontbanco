@@ -25,10 +25,9 @@ import { RiUserReceived2Fill } from "react-icons/ri";
 export const Menu = ({ children }) => {
     const { role } = useContext(MediosContext); 
     const [selectedMenu, setSelectedMenu] = useState("Inicio");
-    const [darkMode, setDarkMode] = useState(false);
     const [openSubMenu, setOpenSubMenu] = useState(null);
-    const [isMenuOpen, setIsMenuOpen] = useState(false);    
     const navigate = useNavigate();
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const getTitle = () => {
         switch (role) {
@@ -50,7 +49,7 @@ export const Menu = ({ children }) => {
     const menuItems = [
         { name: "Inicio", to: "/inicio", roles: ["admin", "contratista", "practicante"]},
         { 
-            name: "Prestamos", 
+            name: "Préstamos", 
             to: "/prestamos", 
             roles: ["admin", "contratista", "practicante"],
             subMenu: [
@@ -59,7 +58,7 @@ export const Menu = ({ children }) => {
             ]
         },
         { 
-            name: "Prestamos_Esp", 
+            name: "Préstamos_Esp", 
             to: "/prestamos_esp", 
             roles: ["admin", "contratista", "practicante"],
             subMenu: [
@@ -199,12 +198,12 @@ export const Menu = ({ children }) => {
     const filteredPerfiles = perfiles.filter(item => item.roles.includes(role));
 
     return (
-        <div className={`flex min-h-screen ${isMenuOpen ? 'pl-64' : 'pl-0 md:pl-64'} transition-all duration-300`}>
-            <aside className={`w-64 h-full overflow-y-auto bg-background text-foreground flex flex-col border-r border-gray transform ${isMenuOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 ease-in-out md:translate-x-0`}>
+        <div className={`flex min-h-screen ${isMenuOpen ? "block" : "flex"}`}>
+            <aside className={`h-[95vh] lg:h-screen overflow-y-auto bg-background text-foreground flex flex-col border-r border-gray transition-transform transform ${isMenuOpen ? "w-full" : "w-64"} lg:w-64`}>
 
-                <div className="flex items-center p-4 border-b cursor-pointer" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                <div className="flex items-center p-4 border-b">
                     <Avatar>
-                        <img src="../../src/assets/Sena.png" alt="Logo" />
+                        <img src="../../assets/Sena.png" />
                         <AvatarFallback>BH</AvatarFallback>
                     </Avatar>
                     <div className="ml-4">
@@ -218,7 +217,10 @@ export const Menu = ({ children }) => {
                                 <Link
                                     to={item.to}
                                     className={`flex items-center space-x-2 px-3 py-2 rounded-md transition-colors ${selectedMenu === item.name ? "bg-primary text-primary-foreground" : "hover:bg-muted"}`}
-                                    onClick={() => setSelectedMenu(item.name)}
+                                    onClick={() => {
+                                        setSelectedMenu(item.name);
+                                        setIsMenuOpen(false); // Cerrar menú después de seleccionar
+                                    }}
                                 >
                                     <Icon name={item.name} className="w-5 h-5" />
                                     <span>{item.name}</span>
@@ -249,6 +251,7 @@ export const Menu = ({ children }) => {
                                                     onClick={() => {
                                                         setSelectedMenu(submenu.name);
                                                         setOpenSubMenu(null);
+                                                        setIsMenuOpen(false)
                                                     }}
                                                 >
                                                     <Icon name={submenu.name} className="w-5 h-5" />
@@ -264,8 +267,11 @@ export const Menu = ({ children }) => {
                 </nav>
             </aside>
             <Divider />
-            <main className="flex-1 p-6 bg-background">
+            <main className={`flex-1 p-6 bg-background ${isMenuOpen ? "hidden lg:block" : ""}`}>
                 <header className="flex items-center justify-between">
+                <button className="lg:hidden p-2" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                    {isMenuOpen ? <XIcon className="w-6 h-6"/> : <List className="w-6 h-6"/>}
+                </button>
                     <h2 className="text-2xl font-bold">Banco de Herramientas</h2>
                     <div className="flex items-center space-x-4">
                         <DropdownMenu>
@@ -319,12 +325,12 @@ function Icon({ name, ...props }) {
         "Moras Activas": <List {...props} />,
         "Daños Pendientes": <List {...props} />,
         "Elementos Prestados": <List {...props} />,
-        "Prestamos_Esp": <GiReturnArrow {...props} />,
+        "Préstamos_Esp": <GiReturnArrow {...props} />,
         "Moras": <AiOutlineAlert {...props} />,
         "Daños": <MdManageHistory {...props} />,
         "Reintegros": <HiSortDescending  {...props} />,
         "Traspasos": <RiUserReceived2Fill  {...props} />,                          
-        "Prestamos": <HandCoins {...props} />,
+        "Préstamos": <HandCoins {...props} />,
         "Registrar Elemento": <List {...props}/>,
         "Registrar Consumo": <List {...props}/>,
         "Registrar Cliente": <List {...props}/>,

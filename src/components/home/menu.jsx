@@ -27,6 +27,7 @@ export const Menu = ({ children }) => {
     const [selectedMenu, setSelectedMenu] = useState("Inicio");
     const [darkMode, setDarkMode] = useState(false);
     const [openSubMenu, setOpenSubMenu] = useState(null);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);    
     const navigate = useNavigate();
 
     const getTitle = () => {
@@ -198,12 +199,12 @@ export const Menu = ({ children }) => {
     const filteredPerfiles = perfiles.filter(item => item.roles.includes(role));
 
     return (
-        <div className={`flex min-h-screen ${darkMode ? "dark" : ""}`}>
-            <aside className="w-64 h-[95vh] overflow-hidden bg-background text-foreground flex flex-col border-r border-gray">
+        <div className={`flex min-h-screen ${isMenuOpen ? 'pl-64' : 'pl-0 md:pl-64'} transition-all duration-300`}>
+            <aside className={`w-64 h-full overflow-y-auto bg-background text-foreground flex flex-col border-r border-gray transform ${isMenuOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 ease-in-out md:translate-x-0`}>
 
-                <div className="flex items-center p-4 border-b">
+                <div className="flex items-center p-4 border-b cursor-pointer" onClick={() => setIsMenuOpen(!isMenuOpen)}>
                     <Avatar>
-                        <img src="../../src/assets/Sena.png" />
+                        <img src="../../src/assets/Sena.png" alt="Logo" />
                         <AvatarFallback>BH</AvatarFallback>
                     </Avatar>
                     <div className="ml-4">

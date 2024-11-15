@@ -39,7 +39,7 @@ const ListComponent = ({
 
             {/* Tabla genérica con scroll vertical y horizontal */}
             <div className="overflow-x-auto">
-                <div className="max-h-[500px] max-w-[1500px] overflow-y-auto overflow-x-auto">
+                <div className="max-h-[500px] max-w-[1200px] overflow-y-auto overflow-x-auto">
                     <table className="min-w-full bg-white border border-black">
                         <thead>
                             <tr>

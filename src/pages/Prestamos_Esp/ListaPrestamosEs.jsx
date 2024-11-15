@@ -73,7 +73,7 @@ const PrestamosEs = () => {
           }}
         />
       </div>
-      <div className="max-h-[400px] max-w-[1000px] overflow-y-auto overflow-x-auto">
+      <div className="max-h-[500px] max-w-[1200px] overflow-y-auto overflow-x-auto">
         <table style={{ margin: '0 auto' }}>
           <thead>
             <tr>

@@ -84,7 +84,7 @@ export const HomePage = () => {
       <section className="mt-6">
         <InputPrestamo/>
         <Card className="border-input">
-          <div className="max-h-[200px] max-w-[1000px] overflow-y-auto overflow-x-auto">
+          <div className="max-h-[200px] max-w-[2500px] overflow-y-auto overflow-x-auto">
           <Table>
           <TableHeader sx={{ color: 'white', textAlign: 'center' }}>
             <TableRow>

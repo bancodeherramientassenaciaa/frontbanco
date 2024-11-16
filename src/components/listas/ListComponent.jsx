@@ -4,7 +4,7 @@ const ListComponent = ({
     data, // Datos de la lista
     columns, // Definición de las columnas (etiquetas)
     renderRow, // Función para renderizar cada fila
-    searchKeys, // Llaves para realizar la búsqueda
+    searchKeys = [], // Llaves para realizar la búsqueda
     title, // Título por defecto
     showSearch = true
 }) => {

@@ -100,11 +100,11 @@ export const HomePage = () => {
             <TableBody>
               {loading ? (
                 <TableRow>
-                  <TableCell colSpan="5">Cargando...</TableCell>
+                  <TableCell colSpan="6">Cargando...</TableCell>
                 </TableRow>
               ) : error ? (
                 <TableRow>
-                  <TableCell colSpan="5">Error al cargar datos</TableCell>
+                  <TableCell colSpan="6">Error al cargar datos</TableCell>
                   </TableRow>
                     ) : latestPrestamos.length > 0 ? (
                       latestPrestamos.map((prestamo) => (
@@ -119,7 +119,7 @@ export const HomePage = () => {
                       ))
                     ) : (
                 <TableRow>
-                  <TableCell colSpan="5">No hay préstamos</TableCell>
+                  <TableCell colSpan="6">No hay préstamos</TableCell>
                 </TableRow>
               )}
             </TableBody>

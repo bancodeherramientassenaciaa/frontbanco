@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2';
 import usePostDataFile from "@/hooks/usePostDataImage";
 import axiosInstance from "../../helpers/axiosConfig.js";
 import '../../assets/formAgregarEditarStyles.css'; 
 
 const DetallePrestamoEs = () => {
+    const navigate = useNavigate();
     const { idprestamo } = useParams();
     const [selectedItems, setSelectedItems] = useState([]);
     const [prestamoDetails, setPrestamoDetails] = useState([]);
@@ -304,6 +305,13 @@ const DetallePrestamoEs = () => {
                         onClick={handleConsumoAll} // Cambiar la función
                     >
                         Consumir Todo
+                    </button>
+                    <button
+                        type="button"
+                        className="consume-button"
+                        onClick={()=>navigate("inicio")}
+                    >
+                        Cancelar 
                     </button>
                 </div>
             </div>

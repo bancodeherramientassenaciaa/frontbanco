@@ -31,7 +31,8 @@ const PrestamosEs = () => {
       } else {
         // Filtrar préstamos por el término de búsqueda
         const prestamosesFiltrados = prestamoses.filter(prestamoes => 
-          prestamoes.clientes_documento.toString().includes(searchTerm.toLowerCase())
+          prestamoes.clientes_documento.toString().includes(searchTerm.toLowerCase()) ||
+          prestamoes.Cliente.nombre.toString().includes(searchTerm.toLowerCase())
         );
         setFilteredprestamoses(prestamosesFiltrados);
       }

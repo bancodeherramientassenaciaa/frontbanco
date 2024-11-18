@@ -29,7 +29,7 @@ const PrestamosActivos = () => {
           prestamo.Elemento.descripcion.toLowerCase().includes(searchTerm.toLowerCase()) ||
           prestamo.elementos_idelemento.toString().includes(searchTerm) ||
           prestamo.PrestamoCorriente.documento.toString().includes(searchTerm) ||
-          prestamo.PrestamoCorriente.Cliente.nombre.toString().includes(searchTerm)
+          prestamo.PrestamoCorriente.Cliente.nombre.toLowerCase().includes(searchTerm.toLowerCase())
         );
         setFilteredPrestamos(prestamosFiltrados);
       }

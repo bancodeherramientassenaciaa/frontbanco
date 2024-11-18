@@ -136,7 +136,7 @@ export const FormCrearEncargo = () => {
                                     <label> Lugar: {areaEncontrada ? areaEncontrada.nombre : "No encontrado"}</label>
                                 </td>
                                 <td colSpan="3">
-                                    <label> Correo: </label>
+                                    <label> Correo Personal: </label>
                                     <input type="email" onChange={handleCorreoChange} value={correo} required />
                                 </td>
                             </tr>
@@ -146,7 +146,7 @@ export const FormCrearEncargo = () => {
                                     <input type="datetime-local" onChange={handleFechaChange} value={fecha_reclamo} required />
                                 </td>
                                 <td colSpan="3">
-                                    <label> Número: </label>
+                                    <label> Celular Personal: </label>
                                     <input type="number" onChange={handleNumeroChange} value={numero} required />
                                 </td>
                             </tr>

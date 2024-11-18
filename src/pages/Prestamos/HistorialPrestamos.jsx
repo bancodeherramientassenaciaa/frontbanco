@@ -29,7 +29,7 @@ const HistorialPrestamos = () => {
                 data={data['historial/prestamo']}
                 columns={columns}
                 renderRow={renderRow}
-                searchKeys={['entidad_id', 'cliente_id', 'cliente_nombre', 'elemento_id', 'elemento_nombre', 'cantidad', 'observaciones', 'estado', 'accion', 'admin_id', 'fecha_accion']}
+                searchKeys={['entidad_id', 'cliente_id', 'cliente_nombre', 'elemento_id', 'elemento_descripcion', 'cantidad', 'observaciones', 'estado', 'accion', 'admin_id', 'fecha_accion']}
                 title="Historial de Préstamos"
             />
         </div>

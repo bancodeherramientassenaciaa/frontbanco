@@ -91,6 +91,7 @@ export const HomePage = () => {
               <TableHead className="text-white text-center">Documento</TableHead>
               <TableHead className="text-white text-center">Usuario</TableHead>
               <TableHead className="text-white text-center">Elemento</TableHead>
+              <TableHead className="text-white text-center">Cantidad</TableHead>
               <TableHead className="text-white text-center">Acción</TableHead>
               <TableHead className="text-white text-center">Estado</TableHead>
             </TableRow>
@@ -111,6 +112,7 @@ export const HomePage = () => {
                           <TableCell>{prestamo.cliente_id}</TableCell>
                           <TableCell>{prestamo.cliente_nombre}</TableCell>
                           <TableCell>{prestamo.elemento_descripcion}</TableCell>
+                          <TableCell>{prestamo.cantidad}</TableCell>
                           <TableCell>{prestamo.accion}</TableCell>
                           <TableCell>{prestamo.estado}</TableCell>
                         </TableRow>

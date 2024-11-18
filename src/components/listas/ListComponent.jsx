@@ -11,15 +11,16 @@ const ListComponent = ({
     const [searchTerm, setSearchTerm] = useState('');
 
     // Filtrar los datos según el término de búsqueda
-    const filteredData = data?.filter((item) =>
-        searchKeys.some((key) => {
-            // Manejo para buscar en item.Elemento.descripcion
-            if (key === 'Elemento.descripcion') {
-                return item.Elemento?.descripcion.toLowerCase().includes(searchTerm.toLowerCase());
-            }
-            return item[key]?.toString().toLowerCase().includes(searchTerm.toLowerCase());
-        })
-    );
+    const filteredData = searchKeys.length > 0
+    ? data?.filter((item) =>
+          searchKeys.some((key) => {
+              if (key === 'Elemento.descripcion') {
+                  return item.Elemento?.descripcion.toLowerCase().includes(searchTerm.toLowerCase());
+              }
+              return item[key]?.toString().toLowerCase().includes(searchTerm.toLowerCase());
+          })
+      )
+    : data
 
     return (
         <div className="p-2">

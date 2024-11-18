@@ -10,12 +10,9 @@ const ListaEncargosCliente = () => {
     const [EncargosRechazados, setEncargosRechazados] = useState([]);
 
     useEffect(() => {
-        if (Array.isArray(data?.encargos)) {
+        if (data?.encargos) {
             setEncargos(data.encargos.filter(encargo => encargo.estado === 'pendiente'));
             setEncargosRechazados(data.encargos.filter(encargo => encargo.estado === 'rechazado'));
-        } else {
-            setEncargos([]);
-            setEncargosRechazados([]);
         }
     }, [data]);
 
@@ -85,7 +82,7 @@ const ListaEncargosCliente = () => {
         <div>
             <div>
                 <ListComponent
-                    data={encargos || []}
+                    data={encargos} 
                     columns={['Elemento', 'Cantidad', 'Observaciones', 'Fecha Reclamo', 'Lugar', '']}
                     renderRow={renderRow}
                     showSearch={false}  
@@ -94,7 +91,7 @@ const ListaEncargosCliente = () => {
             </div>
             <div>
                 <ListComponent
-                    data={Array.isArray(data?.encargos) ? data.encargos.filter(encargo => encargo.estado === 'aceptado') : []}
+                    data={data?.encargos.filter(encargo => encargo.estado === 'aceptado')}
                     columns={['Elemento', 'Cantidad', 'Observaciones', 'Fecha Reclamo', 'Lugar']}
                     renderRow={renderRowAceptados}
                     showSearch={false}  
@@ -103,15 +100,15 @@ const ListaEncargosCliente = () => {
             </div>
             <div>
                 <ListComponent
-                    data={EncargosRechazados || []}
+                    data={EncargosRechazados}
                     columns={['Elemento', 'Cantidad', 'Observaciones', 'Lugar', '']}
                     renderRow={renderRowRechazados}
-                    showSearch={false}                      
+                    showSearch={false}   
                     title="Encargos Rechazados"
                 />
             </div>
         </div>
-    );
+    );  
 };
 
 export default ListaEncargosCliente;

@@ -27,8 +27,7 @@ const PrestamosActivos = () => {
         // Filtrar préstamos por el término de búsqueda
         const prestamosFiltrados = prestamos.filter(prestamo => 
           prestamo.Elemento.descripcion.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          prestamo.elementos_idelemento.toString().includes(searchTerm) ||
-          prestamo.clientes_documento.toLowerCase().includes(searchTerm.toLowerCase())
+          prestamo.elementos_idelemento.toString().includes(searchTerm) 
         );
         setFilteredPrestamos(prestamosFiltrados);
       }

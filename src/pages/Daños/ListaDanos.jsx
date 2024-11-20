@@ -67,6 +67,10 @@ const Danos = () => {
                 Swal.showValidationMessage('Debe ingresar una cantidad válida.');
             }
 
+            if (!observaciones || observaciones == '') {
+                Swal.showValidationMessage('Las observaciones son obligatorias');
+            }
+
             return { cantidadDevuelta, observaciones };
         }
     }).then((result) => {

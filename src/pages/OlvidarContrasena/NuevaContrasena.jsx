@@ -75,16 +75,16 @@ const NuevaContrasena = () => {
                     <Label htmlFor="documento">Nueva Contraseña</Label>
                     <Input
                         name="nuevaContrasena"
-                        placeholder="Documento"
+                        placeholder="Nueva Contraseña"
                         onChange={handleInputChange}
                         value={inputs.nuevaContrasena}
                     />
                 </div>
                 <div className='m-5'>
-                    <Label htmlFor="email">Confirma Contraseña</Label>
+                    <Label htmlFor="email">Confirmar Contraseña</Label>
                     <Input
                         name="confirma"
-                        placeholder="Correo Electrónico"
+                        placeholder="Confirmar Contraseña"
                         onChange={handleInputChange}
                         value={inputs.confirma}
                     />

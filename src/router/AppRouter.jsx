@@ -339,7 +339,7 @@ export const AppRoutes = ({tokenSession}) => {
             )
         },
         {
-            path: '/encargos/elementos/:idarea',
+            path: '/encargos/elementos/:idarea/:idencargo',
             element: (
                 <ProtectedRoute allowedRoles={['instructor']}>
                     <FormCrearEncargo/>

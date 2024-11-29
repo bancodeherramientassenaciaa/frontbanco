@@ -45,7 +45,6 @@ const ListaEncargosAdmin = () => {
         const observacion = observaciones[key];
     
         try {
-            console.log("Intentando aceptar encargo:", encargo); 
             await axiosInstance.post(`${import.meta.env.VITE_API_URL}/encargos/aceptar/${encargos_idencargo}`, {
                 elemento: elementos_idelemento,
                 observaciones: observacion,
@@ -53,7 +52,6 @@ const ListaEncargosAdmin = () => {
     
             // Actualizar la lista de pendientes (remover el elemento aceptado)
             setEncargos((prev) => {
-                console.log("Encargos antes de filtrar:", prev);
                 const nuevosEncargos = prev.filter(
                     (e) =>
                         !(
@@ -61,14 +59,12 @@ const ListaEncargosAdmin = () => {
                             e.elementos_idelemento === elementos_idelemento
                         )
                 );
-                console.log("Encargos después de filtrar:", nuevosEncargos);
                 return nuevosEncargos;
             });
     
             // Agregar el encargo a la lista de aceptados si aún no está
             setEncargosAceptados((prev) => {
                 const existe = prev.some((e) => e.idencargo === encargos_idencargo);
-                console.log("Encargos aceptados antes de agregar:", prev);
                 if (existe) return prev; // No agregar duplicados
                 const nuevoEncargo = {
                     idencargo: encargos_idencargo,

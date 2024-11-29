@@ -114,7 +114,7 @@ export const FormCrearEncargo = () => {
                             </tr>
                             <tr>
                                 <th>Elemento</th>
-                                <th>Disponibles</th>
+                                {/* <th>Disponibles</th> */}
                                 <th>Cantidad</th>
                                 <th>Observaciones</th>
                                 <th></th>
@@ -124,7 +124,7 @@ export const FormCrearEncargo = () => {
                             {selectedItems.map((item) => (
                                 <tr key={item.idelemento}>
                                     <td>{item.descripcion}</td>
-                                    <td>{item.cantidadbd - item.minimo}</td>
+                                    {/* <td>{item.cantidadbd - item.minimo}</td> */}
                                     <td>
                                         <input className="input"
                                             type="number"

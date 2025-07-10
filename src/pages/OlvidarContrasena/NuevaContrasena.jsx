@@ -20,24 +20,27 @@ const NuevaContrasena = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        try {
-            const { nuevaContrasena, confirma } = inputs; 
+        const { nuevaContrasena, confirma } = inputs;
 
-            if (nuevaContrasena !== confirma) {
-                Swal.fire({
-                    icon: "error",
-                    title: "Las contraseñas no coinciden",
-                    text: "Por favor verifique los datos.",
-                    confirmButtonColor: '#FC3F3F',
-                    customClass: {
-                        container: 'swal2-container',
-                        popup: 'swal2-popup'
-                    }
-                });
-                return;
-            }
-    
-            const response = await axios.post(`${import.meta.env.VITE_API_URL}/olvidar-contrasena/restablecer-constrasena`, { token, nuevaContrasena});   
+        if (nuevaContrasena !== confirma) {
+            Swal.fire({
+                icon: "error",
+                title: "Las contraseñas no coinciden",
+                text: "Por favor verifique los datos.",
+                confirmButtonColor: '#FC3F3F',
+                customClass: {
+                    container: 'swal2-container',
+                    popup: 'swal2-popup'
+                }
+            });
+            return;
+        }
+
+        try {
+            const response = await axios.post(
+                `${import.meta.env.VITE_API_URL}/olvidar-contrasena/restablecer`,
+                { token, nuevaContrasena }
+            );
 
             Swal.fire({
                 icon: "success",
@@ -52,7 +55,8 @@ const NuevaContrasena = () => {
                 navigate('/login');
             });
 
-        } catch (error) {console.log(error)
+        } catch (error) {
+            console.log(error);
             const mensaje = error.response?.data?.mensaje || "Error inesperado";
             Swal.fire({
                 icon: "error",
@@ -65,28 +69,32 @@ const NuevaContrasena = () => {
                 }
             });
         }
-    };    
+    };
 
     return (
         <div className="flex items-center justify-center min-h-screen">
-            <form onSubmit={handleSubmit} className='shadow-lg text-3xl p-10 border border-neutral-400/40 m-4 p-6 shadow-lg shadow-[#1565c023] rounded-lg'>
+            <form onSubmit={handleSubmit} className='shadow-lg text-3xl p-10 border border-neutral-400/40 m-4 shadow-lg shadow-[#1565c023] rounded-lg'>
                 <h1 className='font-bold m-1'>Restablecer Contraseña</h1>
                 <div className='m-5'>
-                    <Label htmlFor="documento">Nueva Contraseña</Label>
+                    <Label htmlFor="nuevaContrasena">Nueva Contraseña</Label>
                     <Input
                         name="nuevaContrasena"
+                        type="password"
                         placeholder="Nueva Contraseña"
                         onChange={handleInputChange}
                         value={inputs.nuevaContrasena}
+                        required
                     />
                 </div>
                 <div className='m-5'>
-                    <Label htmlFor="email">Confirmar Contraseña</Label>
+                    <Label htmlFor="confirma">Confirmar Contraseña</Label>
                     <Input
                         name="confirma"
+                        type="password"
                         placeholder="Confirmar Contraseña"
                         onChange={handleInputChange}
                         value={inputs.confirma}
+                        required
                     />
                 </div>
                 <div className='text-center pt-2'>

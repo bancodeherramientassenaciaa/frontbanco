@@ -38,7 +38,7 @@ const NuevaContrasena = () => {
 
         try {
             const response = await axios.post(
-                `${import.meta.env.VITE_API_URL}/api/olvidar-contrasena/restablecer-contrasena`, // ✅ URL corregida
+                `${import.meta.env.VITE_API_URL}/olvidar-contrasena/restablecer`,
                 { token, nuevaContrasena }
             );
 

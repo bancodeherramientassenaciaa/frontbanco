@@ -44,7 +44,7 @@ const NuevaContrasena = () => {
             });
             
             const response = await axiosInstance.post(
-                `${import.meta.env.VITE_API_URL}/olvidar-contrasena/test-post`,
+                `${import.meta.env.VITE_API_URL}/olvidar-contrasena/restablecer-contrasena`,
                 { token, nuevaContrasena }
             );
 

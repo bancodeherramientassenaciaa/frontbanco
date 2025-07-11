@@ -2,11 +2,18 @@
 import axios from 'axios';
 
 // Detectar si estamos en desarrollo o producción
-const isDevelopment = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+const isDevelopment = window.location.hostname === 'localhost' || 
+                      window.location.hostname === '127.0.0.1' ||
+                      window.location.hostname === '26.95.85.140' ||   // IP Radmin VPN
+                      window.location.hostname === '172.30.5.184';     // IP Red Local
 
 // Configurar la URL base según el entorno
 const getBaseURL = () => {
     if (isDevelopment) {
+        // Para acceso de red, usar la IP local del backend
+        if (window.location.hostname === '26.95.85.140' || window.location.hostname === '172.30.5.184') {
+            return 'http://26.95.85.140:3000/api';  // Backend en IP Radmin
+        }
         return import.meta.env.VITE_API_URL || 'http://localhost:3000/api';
     } else {
         return import.meta.env.VITE_API_URL_PRODUCTION || 'https://backbanco-1.onrender.com/api';

@@ -11,3 +11,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 
 // Minor change to trigger deployment
 console.log('Triggering frontend deployment');
+
+// Additional change to force Vercel deployment
+console.log('Force deployment update');

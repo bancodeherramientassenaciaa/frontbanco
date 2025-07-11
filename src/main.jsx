@@ -8,3 +8,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <MediosApp />
   </React.StrictMode>,
 )
+
+// Minor change to trigger deployment
+console.log('Triggering frontend deployment');

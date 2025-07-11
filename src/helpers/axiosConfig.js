@@ -4,19 +4,12 @@ import axios from 'axios';
 // Detectar si estamos en desarrollo o producción
 const isDevelopment = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
 
-console.log('🌍 Hostname actual:', window.location.hostname);
-console.log('🛠️ Modo desarrollo:', isDevelopment);
-
 // Configurar la URL base según el entorno
 const getBaseURL = () => {
     if (isDevelopment) {
-        const url = import.meta.env.VITE_API_URL || 'http://localhost:3000/api';
-        console.log('🔧 Modo desarrollo - Usando URL:', url);
-        return url;
+        return import.meta.env.VITE_API_URL || 'http://localhost:3000/api';
     } else {
-        const url = import.meta.env.VITE_API_URL_PRODUCTION || 'https://backbanco-1.onrender.com/api';
-        console.log('🚀 Modo producción - Usando URL:', url);
-        return url;
+        return import.meta.env.VITE_API_URL_PRODUCTION || 'https://backbanco-1.onrender.com/api';
     }
 };
 

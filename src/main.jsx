@@ -14,3 +14,6 @@ console.log('Triggering frontend deployment');
 
 // Additional change to force Vercel deployment
 console.log('Force deployment update');
+
+// Final change to force Vercel sync with latest commit
+console.log('Latest deployment trigger - c853449');

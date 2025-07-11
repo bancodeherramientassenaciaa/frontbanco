@@ -1,5 +1,5 @@
 import {jwtDecode} from 'jwt-decode';
-import axios from 'axios';
+import axiosInstance from '../../../helpers/axiosConfig.js';
 import useLogin from '@/hooks/useLogin';
 import Swal from 'sweetalert2';
 
@@ -25,7 +25,7 @@ const LogoutButton = () => {
               }).then((result) => {
                 if (result.isConfirmed) {
                   localStorage.removeItem('authToken');
-                  axios.post(`${import.meta.env.VITE_API_URL}/logout`, { documento });
+                  axiosInstance.post(`${import.meta.env.VITE_API_URL}/logout`, { documento });
                   window.location.href = '/login';
                 }
               });

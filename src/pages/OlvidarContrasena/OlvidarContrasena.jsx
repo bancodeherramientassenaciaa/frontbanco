@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axiosInstance from '../../helpers/axiosConfig.js';
 import Swal from 'sweetalert2';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -22,7 +22,7 @@ const OlvidarContrasena = () => {
         try {
             const { email, documento } = inputs; // Asegúrate de estar usando `inputs`
     
-            const response = await axios.post(`${import.meta.env.VITE_API_URL}/olvidar-contrasena/solicitar-restablecer`, { documento, correo: email });   
+            const response = await axiosInstance.post(`${import.meta.env.VITE_API_URL}/olvidar-contrasena/solicitar-restablecer`, { documento, correo: email });   
 
             Swal.fire({
                 icon: "success",

@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axiosInstance from '../../helpers/axiosConfig.js';
 import Swal from 'sweetalert2';
 import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -37,8 +37,8 @@ const NuevaContrasena = () => {
         }
 
         try {
-            const response = await axios.post(
-                `${import.meta.env.VITE_API_URL}/olvidar-contrasena/restablecer`,
+            const response = await axiosInstance.post(
+                `${import.meta.env.VITE_API_URL}/olvidar-contrasena/restablecer-contrasena`,
                 { token, nuevaContrasena }
             );
 

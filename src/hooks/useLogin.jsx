@@ -12,12 +12,20 @@ const useLogin = (url, inputs) => {
 
     const aceptSubmit = async () => {
         try {
-            const response = await axiosInstance.post(`${import.meta.env.VITE_API_URL}/${url}`, inputs);
+            const response = await axiosInstance.post(`/${url}`, inputs);
             const token = response.data.token;
 
-            // Decodificar el token para obtener el tipo de usuario
+            // Validar el token recibido
+            if (!token) {
+                throw new Error("Token no recibido del backend");
+            }
+
             const decodedToken = jwtDecode(token);
             const userType = decodedToken.role;
+
+            if (!userType) {
+                throw new Error("El token no contiene información de rol");
+            }
 
             Swal.fire({
                 title: "¡Bien!",
@@ -53,7 +61,7 @@ const useLogin = (url, inputs) => {
                         confirmButtonColor: '#007BFF',
                     });
                 }
-                
+
                 // Redirige según el tipo de usuario
                 if (userType === 'admin' || userType === 'contratista' || userType === 'practicante') {
                     navigate("/inicio", { replace: true });
@@ -67,14 +75,14 @@ const useLogin = (url, inputs) => {
                 }
             });
         } catch (error) {
-            const mensaje = error.response?.data?.mensaje || "Error inesperado";
+            const mensaje = error.response?.data?.mensaje || error.message || "Error inesperado";
             Swal.fire({
                 icon: "error",
                 title: mensaje,
                 text: `Por favor verifique los datos.`,
                 confirmButtonColor: '#FC3F3F'
             });
-            console.log(error);
+            console.error("Error en la solicitud de inicio de sesión:", error);
         }
     };
 

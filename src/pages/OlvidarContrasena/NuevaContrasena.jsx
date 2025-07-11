@@ -37,10 +37,18 @@ const NuevaContrasena = () => {
         }
 
         try {
+            console.log('🔍 Enviando petición:', {
+                url: `${import.meta.env.VITE_API_URL}/olvidar-contrasena/restablecer-contrasena`,
+                token: token?.substring(0, 20) + '...',
+                nuevaContrasena: nuevaContrasena ? '[DEFINIDA]' : '[VACÍA]'
+            });
+            
             const response = await axiosInstance.post(
                 `${import.meta.env.VITE_API_URL}/olvidar-contrasena/restablecer-contrasena`,
                 { token, nuevaContrasena }
             );
+
+            console.log('✅ Respuesta exitosa:', response.data);
 
             Swal.fire({
                 icon: "success",
@@ -56,7 +64,11 @@ const NuevaContrasena = () => {
             });
 
         } catch (error) {
-            console.log(error);
+            console.error('❌ Error completo:', error);
+            console.error('❌ Error response:', error.response);
+            console.error('❌ Error data:', error.response?.data);
+            console.error('❌ Error status:', error.response?.status);
+            
             const mensaje = error.response?.data?.mensaje || "Error inesperado";
             Swal.fire({
                 icon: "error",

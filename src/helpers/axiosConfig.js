@@ -3,7 +3,7 @@ import axios from 'axios';
 
 // Crear una instancia de axios
 const axiosInstance = axios.create({
-    baseURL: 'https://backbanco.onrender.com/api', // Corregida la URL y agregada /api
+    baseURL: 'https://backbanco-1.onrender.com/api', // URL corregida
     withCredentials: false, // Temporalmente sin credenciales para evitar CORS
     headers: {
         'Content-Type': 'application/json',
